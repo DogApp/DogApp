@@ -15,6 +15,9 @@
 		3A096CCC1ED40A3C00DF6C7C /* TestCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A096CCB1ED40A3C00DF6C7C /* TestCaseTests.swift */; };
 		3A096CD71ED40A3C00DF6C7C /* TestCaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A096CD61ED40A3C00DF6C7C /* TestCaseUITests.swift */; };
 		3A10278E1ED43E2F002B8FC6 /* datasAndSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A10278D1ED43E2F002B8FC6 /* datasAndSettings.swift */; };
+		3A15A8061ED5D417008CCB90 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15A8051ED5D417008CCB90 /* MapViewController.swift */; };
+		3A15A8081ED5D42D008CCB90 /* LinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15A8071ED5D42D008CCB90 /* LinkViewController.swift */; };
+		3A15A80A1ED5D5E7008CCB90 /* NewDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15A8091ED5D5E7008CCB90 /* NewDogViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		3A096CD61ED40A3C00DF6C7C /* TestCaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCaseUITests.swift; sourceTree = "<group>"; };
 		3A096CD81ED40A3C00DF6C7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A10278D1ED43E2F002B8FC6 /* datasAndSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = datasAndSettings.swift; sourceTree = "<group>"; };
+		3A15A8051ED5D417008CCB90 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3A15A8071ED5D42D008CCB90 /* LinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkViewController.swift; sourceTree = "<group>"; };
+		3A15A8091ED5D5E7008CCB90 /* NewDogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDogViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,9 @@
 				3A096CB61ED40A3C00DF6C7C /* AppDelegate.swift */,
 				3A096CB81ED40A3C00DF6C7C /* ViewController.swift */,
 				3A096CBA1ED40A3C00DF6C7C /* Main.storyboard */,
+				3A15A8091ED5D5E7008CCB90 /* NewDogViewController.swift */,
+				3A15A8051ED5D417008CCB90 /* MapViewController.swift */,
+				3A15A8071ED5D42D008CCB90 /* LinkViewController.swift */,
 				3A10278D1ED43E2F002B8FC6 /* datasAndSettings.swift */,
 				3A096CBD1ED40A3C00DF6C7C /* Assets.xcassets */,
 				3A096CBF1ED40A3C00DF6C7C /* LaunchScreen.storyboard */,
@@ -267,7 +276,10 @@
 			files = (
 				3A096CB91ED40A3C00DF6C7C /* ViewController.swift in Sources */,
 				3A10278E1ED43E2F002B8FC6 /* datasAndSettings.swift in Sources */,
+				3A15A80A1ED5D5E7008CCB90 /* NewDogViewController.swift in Sources */,
+				3A15A8081ED5D42D008CCB90 /* LinkViewController.swift in Sources */,
 				3A096CB71ED40A3C00DF6C7C /* AppDelegate.swift in Sources */,
+				3A15A8061ED5D417008CCB90 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

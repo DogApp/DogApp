@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         var imageMade:UIImage?
         
         if (dogList.count >= 3){
-            imageName = dogList[0].imageName
+            imageName = dogList[2].imageName
             imageMade = UIImage(named: imageName)
             image3 = circleImageView(image: imageMade!)
         
@@ -55,12 +55,12 @@ class ViewController: UIViewController {
             image3!.layer.borderColor = UIColor.black.cgColor
             image3!.layer.cornerRadius = image3!.frame.height/2
             image3!.clipsToBounds = true
-            image3!.imgIndex = 0
+            image3!.imgIndex = 2
             view.addSubview(image3!)
         }
         
         if (dogList.count >= 2){
-            imageName = dogList[1].imageName
+            imageName = dogList[0].imageName
             imageMade = UIImage(named: imageName)
             image2 = circleImageView(image: imageMade!)
             
@@ -72,12 +72,12 @@ class ViewController: UIViewController {
             image2!.layer.borderColor = UIColor.black.cgColor
             image2!.layer.cornerRadius = image2!.frame.height/2
             image2!.clipsToBounds = true
-            image2!.imgIndex = 1
+            image2!.imgIndex = 0
             view.addSubview(image2!)
         }
         
         if (dogList.count >= 1){
-            imageName = dogList[2].imageName
+            imageName = dogList[1].imageName
             imageMade = UIImage(named: imageName)
             image = circleImageView(image: imageMade!)
         
@@ -93,7 +93,7 @@ class ViewController: UIViewController {
             image!.addGestureRecognizer(gestureRecognizerLtR)
             image!.addGestureRecognizer(gestureRecognizerRtL)
             image!.isUserInteractionEnabled = true
-            image!.imgIndex = 2
+            image!.imgIndex = 1
             view.addSubview(image!)
         }
     }
@@ -103,11 +103,55 @@ class ViewController: UIViewController {
     }
     
     func swipeFuncLtR(){
-        print("To right.")
+        if (image!.imgIndex == 0){
+            print("No more.")
+        }
+        else{
+            image!.imgIndex -= 1
+            image2!.imgIndex -= 1
+            image3!.imgIndex -= 1
+            
+            image3!.image = image!.image
+            image!.image = image2!.image
+            if (image2!.imgIndex < 0){
+                image2!.removeFromSuperview()
+            }
+            else{
+                let imageMade = UIImage(named: dogList[image2!.imgIndex].imageName)
+                image2!.image = imageMade
+            }
+            
+            if (image3!.imgIndex == dogList.count-1){
+                view.addSubview(image3!)
+                view.bringSubview(toFront: image!)
+            }
+        }
     }
     
     func swipeFuncRtL(){
-        print("To left.")
+        if (image!.imgIndex == dogList.count - 1){
+            print("No more.")
+        }
+        else{
+            image!.imgIndex += 1
+            image2!.imgIndex += 1
+            image3!.imgIndex += 1
+            
+            image2!.image = image!.image
+            image!.image = image3!.image
+            if (image3!.imgIndex == dogList.count){
+                image3!.removeFromSuperview()
+            }
+            else{
+                let imageMade = UIImage(named: dogList[image3!.imgIndex].imageName)
+                image3!.image = imageMade
+            }
+            
+            if (image2!.imgIndex == 0){
+                view.addSubview(image2!)
+                view.bringSubview(toFront: image!)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
