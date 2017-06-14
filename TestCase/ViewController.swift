@@ -21,10 +21,14 @@ class circleImageView:UIImageView{
 }
 
 class ViewController: UIViewController {
-    var image: circleImageView? = nil
-    var image2: circleImageView? = nil
-    var image3: circleImageView? = nil
+    //var image: circleImageView? = nil
+    //var image2: circleImageView? = nil
+    //var image3: circleImageView? = nil
 
+    @IBOutlet var image3: circleImageView!
+    @IBOutlet weak var image: circleImageView!
+    @IBOutlet var image2: circleImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,112 +49,117 @@ class ViewController: UIViewController {
         if (dogList.count >= 3){
             imageName = dogList[2].imageName
             imageMade = UIImage(named: imageName)
-            image3 = circleImageView(image: imageMade!)
-        
-            image3!.frame = CGRect(x: 0, y: 0, width: 130, height: 130)
-            image3!.frame.origin.x = view.frame.width/2 + 35
-            image3!.frame.origin.y = view.frame.height/2 - 200
-            image3!.layer.borderWidth = 1
-            image3!.layer.masksToBounds = false
-            image3!.layer.borderColor = UIColor.black.cgColor
-            image3!.layer.cornerRadius = image3!.frame.height/2
-            image3!.clipsToBounds = true
-            image3!.imgIndex = 2
-            view.addSubview(image3!)
+            image3.image = imageMade
+            
+            //image3.frame = CGRect(x: 0, y: 0, width: 130, height: 130)
+            //image3.frame.origin.x = view.frame.width/2 + 35
+            //image3.frame.origin.y = view.frame.height/2 - 200
+            image3.layer.borderWidth = 1
+            image3.layer.masksToBounds = false
+            image3.layer.borderColor = UIColor.black.cgColor
+            image3.layer.cornerRadius = image3.frame.height/2
+            image3.clipsToBounds = true
+            image3.imgIndex = 2
         }
         
         if (dogList.count >= 2){
             imageName = dogList[0].imageName
             imageMade = UIImage(named: imageName)
-            image2 = circleImageView(image: imageMade!)
+            image2.image = imageMade
             
-            image2!.frame = CGRect(x: 0, y: 0, width: 130, height: 130)
-            image2!.frame.origin.x = view.frame.width/2 - 185
-            image2!.frame.origin.y = view.frame.height/2 - 200
-            image2!.layer.borderWidth = 1
-            image2!.layer.masksToBounds = false
-            image2!.layer.borderColor = UIColor.black.cgColor
-            image2!.layer.cornerRadius = image2!.frame.height/2
-            image2!.clipsToBounds = true
-            image2!.imgIndex = 0
-            view.addSubview(image2!)
+            //image2.frame = CGRect(x: 0, y: 0, width: 130, height: 130)
+            //image2.frame.origin.x = view.frame.width/2 - 185
+            //image2.frame.origin.y = view.frame.height/2 - 200
+            image2.layer.borderWidth = 1
+            image2.layer.masksToBounds = false
+            image2.layer.borderColor = UIColor.black.cgColor
+            image2.layer.cornerRadius = image2.frame.height/2
+            image2.clipsToBounds = true
+            image2.imgIndex = 0
         }
         
         if (dogList.count >= 1){
             imageName = dogList[1].imageName
             imageMade = UIImage(named: imageName)
-            image = circleImageView(image: imageMade!)
+            image.image = imageMade
         
-            image!.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
-            image!.frame.origin.x = view.frame.width/2 - 75
-            image!.frame.origin.y = view.frame.height/2 - 180
-            image!.layer.borderWidth = 1
-            image!.layer.masksToBounds = false
-            image!.layer.borderColor = UIColor.black.cgColor
-            image!.layer.cornerRadius = image!.frame.height/2
-            image!.clipsToBounds = true
-            image!.addGestureRecognizer(gestureRecognizer)
-            image!.addGestureRecognizer(gestureRecognizerLtR)
-            image!.addGestureRecognizer(gestureRecognizerRtL)
-            image!.isUserInteractionEnabled = true
-            image!.imgIndex = 1
-            view.addSubview(image!)
+            //image.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+            //image.frame.origin.x = view.frame.width/2 - 75
+            //image.frame.origin.y = view.frame.height/2 - 180
+            image.layer.borderWidth = 1
+            image.layer.masksToBounds = false
+            image.layer.borderColor = UIColor.black.cgColor
+            image.layer.cornerRadius = image.frame.height/2
+            image.clipsToBounds = true
+            image.addGestureRecognizer(gestureRecognizer)
+            image.addGestureRecognizer(gestureRecognizerLtR)
+            image.addGestureRecognizer(gestureRecognizerRtL)
+            image.isUserInteractionEnabled = true
+            image.imgIndex = 1
+            view.bringSubview(toFront: image)
         }
     }
     
     func touchFunc(){
         print("Hello world!")
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        //self.navigationController?.pushViewController(secondViewController, animated: true)
+        self.present(secondViewController, animated: true, completion: nil)
     }
     
     func swipeFuncLtR(){
-        if (image!.imgIndex == 0){
+        if (image.imgIndex == 0){
             print("No more.")
         }
         else{
-            image!.imgIndex -= 1
-            image2!.imgIndex -= 1
-            image3!.imgIndex -= 1
+            image.imgIndex -= 1
+            image2.imgIndex -= 1
+            image3.imgIndex -= 1
             
-            image3!.image = image!.image
-            image!.image = image2!.image
-            if (image2!.imgIndex < 0){
-                image2!.removeFromSuperview()
+            image3.image = image.image
+            image.image = image2.image
+            if (image2.imgIndex < 0){
+                image2.removeFromSuperview()
             }
             else{
-                let imageMade = UIImage(named: dogList[image2!.imgIndex].imageName)
-                image2!.image = imageMade
+                let imageMade = UIImage(named: dogList[image2.imgIndex].imageName)
+                image2.image = imageMade
             }
             
-            if (image3!.imgIndex == dogList.count-1){
-                view.addSubview(image3!)
-                view.bringSubview(toFront: image!)
+            if (image3.imgIndex == dogList.count-1){
+                view.addSubview(image3)
+                view.bringSubview(toFront: image)
             }
+            
+            chosenDog -= 1
         }
     }
     
     func swipeFuncRtL(){
-        if (image!.imgIndex == dogList.count - 1){
+        if (image.imgIndex == dogList.count - 1){
             print("No more.")
         }
         else{
-            image!.imgIndex += 1
-            image2!.imgIndex += 1
-            image3!.imgIndex += 1
+            image.imgIndex += 1
+            image2.imgIndex += 1
+            image3.imgIndex += 1
             
-            image2!.image = image!.image
-            image!.image = image3!.image
-            if (image3!.imgIndex == dogList.count){
-                image3!.removeFromSuperview()
+            image2.image = image.image
+            image.image = image3.image
+            if (image3.imgIndex == dogList.count){
+                image3.removeFromSuperview()
             }
             else{
-                let imageMade = UIImage(named: dogList[image3!.imgIndex].imageName)
-                image3!.image = imageMade
+                let imageMade = UIImage(named: dogList[image3.imgIndex].imageName)
+                image3.image = imageMade
             }
             
-            if (image2!.imgIndex == 0){
-                view.addSubview(image2!)
-                view.bringSubview(toFront: image!)
+            if (image2.imgIndex == 0){
+                view.addSubview(image2)
+                view.bringSubview(toFront: image)
             }
+            
+            chosenDog += 1
         }
     }
 

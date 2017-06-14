@@ -21,3 +21,13 @@ var dogList:[Dog] = [ Dog(age:3, weight:7, name:"pipi", imageName:"Dog1"),
                       Dog(age:7, weight:1, name:"emem", imageName:"Dog4"),
                       Dog(age:5, weight:6, name:"fefe", imageName:"Dog5")
                     ]
+var chosenDog = 1
+
+var urls:[String] = [   "http://www.kkc.or.kr",
+                        "http://www.dog-zzang.co.kr",
+                        "http://www.angel.or.kr"
+                    ]
+
+func calculateFeed(weight:Int)->Double{
+    return 33.33
+}
