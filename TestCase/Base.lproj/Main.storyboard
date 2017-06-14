@@ -443,6 +443,14 @@
                                     <action selector="close" destination="1lZ-qP-Pbk" eventType="touchUpInside" id="1KK-o9-Vjq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYC-ew-3ej">
+                                <rect key="frame" x="300" y="601" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <segue destination="yqz-yl-deP" kind="presentation" identifier="SendImage" id="UMf-Yy-Hye"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -453,6 +461,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cF1-le-mfh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-458" y="-804"/>
+        </scene>
+        <!--Temp View Controller-->
+        <scene sceneID="0O8-0O-xEZ">
+            <objects>
+                <viewController storyboardIdentifier="TempViewController" id="yqz-yl-deP" userLabel="Temp View Controller" customClass="TempViewController" customModule="TestCase" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UxP-n7-6iE"/>
+                        <viewControllerLayoutGuide type="bottom" id="005-YX-RlY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vsi-yD-we9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D1h-ie-3er">
+                                <rect key="frame" x="48" y="157" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="D1h-ie-3er" id="oXT-I9-e4D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DpJ-Tk-Rlz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="-805"/>
         </scene>
     </scenes>
 </document>

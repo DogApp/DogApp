@@ -9,10 +9,16 @@
 
 import UIKit
 
+protocol photoViewControllerDelegate: class{
+    func sendImageData(imageData: Data)
+}
+
 class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var image : UIImage?
 
+    weak var delegate : photoViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -69,6 +75,18 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         myImage.image = image
         //myImage.isHidden = false
         //myImage.frame = CGRect(x : 10, y : 10, width: 260, height : 260)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SendImage"{
+            self.delegate = segue.destination as! TempViewController
+            
+            if let image = image{
+                if let pngImage = UIImagePNGRepresentation(image){
+                    delegate?.sendImageData(imageData: pngImage)
+                }
+            }
+        }
     }
     
     @IBAction func close() {

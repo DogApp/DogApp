@@ -101,7 +101,6 @@ class ViewController: UIViewController {
     }
     
     func touchFunc(){
-        print("Hello world!")
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         //self.navigationController?.pushViewController(secondViewController, animated: true)
         self.present(secondViewController, animated: true, completion: nil)
