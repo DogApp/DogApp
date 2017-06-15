@@ -46,6 +46,12 @@ class ViewController: UIViewController {
         var imageName:String
         var imageMade:UIImage?
         
+        image3.layer.borderWidth = 1
+        image3.layer.masksToBounds = false
+        image3.layer.borderColor = UIColor.black.cgColor
+        image3.layer.cornerRadius = image3.frame.height/2
+        image3.clipsToBounds = true
+        image3.imgIndex = 2
         if (dogList.count >= 3){
             imageName = dogList[2].imageName
             imageMade = UIImage(named: imageName)
@@ -54,14 +60,17 @@ class ViewController: UIViewController {
             //image3.frame = CGRect(x: 0, y: 0, width: 130, height: 130)
             //image3.frame.origin.x = view.frame.width/2 + 35
             //image3.frame.origin.y = view.frame.height/2 - 200
-            image3.layer.borderWidth = 1
-            image3.layer.masksToBounds = false
-            image3.layer.borderColor = UIColor.black.cgColor
-            image3.layer.cornerRadius = image3.frame.height/2
-            image3.clipsToBounds = true
-            image3.imgIndex = 2
+        }
+        else{
+            image3.removeFromSuperview()
         }
         
+        image2.layer.borderWidth = 1
+        image2.layer.masksToBounds = false
+        image2.layer.borderColor = UIColor.black.cgColor
+        image2.layer.cornerRadius = image2.frame.height/2
+        image2.clipsToBounds = true
+        image2.imgIndex = 0
         if (dogList.count >= 2){
             imageName = dogList[0].imageName
             imageMade = UIImage(named: imageName)
@@ -70,16 +79,20 @@ class ViewController: UIViewController {
             //image2.frame = CGRect(x: 0, y: 0, width: 130, height: 130)
             //image2.frame.origin.x = view.frame.width/2 - 185
             //image2.frame.origin.y = view.frame.height/2 - 200
-            image2.layer.borderWidth = 1
-            image2.layer.masksToBounds = false
-            image2.layer.borderColor = UIColor.black.cgColor
-            image2.layer.cornerRadius = image2.frame.height/2
-            image2.clipsToBounds = true
-            image2.imgIndex = 0
+        }
+        else{
+            image2.removeFromSuperview()
         }
         
         if (dogList.count >= 1){
-            imageName = dogList[1].imageName
+            if (dogList.count == 1){
+                imageName = dogList[0].imageName
+                chosenDog = 0
+            }
+            else{
+                imageName = dogList[1].imageName
+                chosenDog = 1
+            }
             imageMade = UIImage(named: imageName)
             image.image = imageMade
         
@@ -95,7 +108,7 @@ class ViewController: UIViewController {
             image.addGestureRecognizer(gestureRecognizerLtR)
             image.addGestureRecognizer(gestureRecognizerRtL)
             image.isUserInteractionEnabled = true
-            image.imgIndex = 1
+            image.imgIndex = chosenDog
             view.bringSubview(toFront: image)
         }
     }
@@ -107,58 +120,62 @@ class ViewController: UIViewController {
     }
     
     func swipeFuncLtR(){
-        if (image.imgIndex == 0){
-            print("No more.")
-        }
-        else{
-            image.imgIndex -= 1
-            image2.imgIndex -= 1
-            image3.imgIndex -= 1
-            
-            image3.image = image.image
-            image.image = image2.image
-            if (image2.imgIndex < 0){
-                image2.removeFromSuperview()
+        if (dogList.count != 1){
+            if (image.imgIndex == 0){
+                print("No more.")
             }
             else{
-                let imageMade = UIImage(named: dogList[image2.imgIndex].imageName)
-                image2.image = imageMade
-            }
+                image.imgIndex -= 1
+                image2.imgIndex -= 1
+                image3.imgIndex -= 1
             
-            if (image3.imgIndex == dogList.count-1){
-                view.addSubview(image3)
-                view.bringSubview(toFront: image)
-            }
+                image3.image = image.image
+                image.image = image2.image
+                if (image2.imgIndex < 0){
+                    image2.removeFromSuperview()
+                }
+                else{
+                    let imageMade = UIImage(named: dogList[image2.imgIndex].imageName)
+                    image2.image = imageMade
+                }
             
-            chosenDog -= 1
+                if (image3.imgIndex == dogList.count-1){
+                    view.addSubview(image3)
+                    view.bringSubview(toFront: image)
+                }
+            
+                chosenDog -= 1
+            }
         }
     }
     
     func swipeFuncRtL(){
-        if (image.imgIndex == dogList.count - 1){
-            print("No more.")
-        }
-        else{
-            image.imgIndex += 1
-            image2.imgIndex += 1
-            image3.imgIndex += 1
-            
-            image2.image = image.image
-            image.image = image3.image
-            if (image3.imgIndex == dogList.count){
-                image3.removeFromSuperview()
+        if (dogList.count != 1){
+            if (image.imgIndex == dogList.count - 1){
+                print("No more.")
             }
             else{
-                let imageMade = UIImage(named: dogList[image3.imgIndex].imageName)
-                image3.image = imageMade
-            }
+                image.imgIndex += 1
+                image2.imgIndex += 1
+                image3.imgIndex += 1
             
-            if (image2.imgIndex == 0){
-                view.addSubview(image2)
-                view.bringSubview(toFront: image)
-            }
+                image2.image = image.image
+                image.image = image3.image
+                if (image3.imgIndex == dogList.count){
+                    image3.removeFromSuperview()
+                }
+                else{
+                    let imageMade = UIImage(named: dogList[image3.imgIndex].imageName)
+                    image3.image = imageMade
+                }
             
-            chosenDog += 1
+                if (image2.imgIndex == 0){
+                    view.addSubview(image2)
+                    view.bringSubview(toFront: image)
+                }
+            
+                chosenDog += 1
+            }
         }
     }
 

@@ -20,8 +20,12 @@
 		3A15A8081ED5D42D008CCB90 /* LinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15A8071ED5D42D008CCB90 /* LinkViewController.swift */; };
 		3A15A80A1ED5D5E7008CCB90 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15A8091ED5D5E7008CCB90 /* PhotoViewController.swift */; };
 		3A15A80C1ED5E5FA008CCB90 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15A80B1ED5E5FA008CCB90 /* DetailViewController.swift */; };
-		3AE559CC1EF1330200B95FB8 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE559CA1EF1330200B95FB8 /* DataModel.xcdatamodeld */; };
+		3AE559CC1EF1330200B95FB8 /* TestCase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AE559CA1EF1330200B95FB8 /* TestCase.xcdatamodeld */; };
 		3AE559D01EF13B2100B95FB8 /* TempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE559CF1EF13B2100B95FB8 /* TempViewController.swift */; };
+		3AE559D31EF151F600B95FB8 /* Doglist+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE559D11EF151F600B95FB8 /* Doglist+CoreDataClass.swift */; };
+		3AE559D41EF151F600B95FB8 /* Doglist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE559D21EF151F600B95FB8 /* Doglist+CoreDataProperties.swift */; };
+		3AE559D61EF1529300B95FB8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE559D51EF1529300B95FB8 /* CoreDataStack.swift */; };
+		3AE559D81EF1688100B95FB8 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE559D71EF1688100B95FB8 /* NewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +65,12 @@
 		3A15A8071ED5D42D008CCB90 /* LinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkViewController.swift; sourceTree = "<group>"; };
 		3A15A8091ED5D5E7008CCB90 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		3A15A80B1ED5E5FA008CCB90 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		3AE559CB1EF1330200B95FB8 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		3AE559CB1EF1330200B95FB8 /* TestCase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestCase.xcdatamodel; sourceTree = "<group>"; };
 		3AE559CF1EF13B2100B95FB8 /* TempViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TempViewController.swift; path = ../TempViewController.swift; sourceTree = "<group>"; };
+		3AE559D11EF151F600B95FB8 /* Doglist+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Doglist+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3AE559D21EF151F600B95FB8 /* Doglist+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Doglist+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3AE559D51EF1529300B95FB8 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		3AE559D71EF1688100B95FB8 /* NewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +121,16 @@
 		3A096CB51ED40A3C00DF6C7C /* TestCase */ = {
 			isa = PBXGroup;
 			children = (
+				3AE559D11EF151F600B95FB8 /* Doglist+CoreDataClass.swift */,
+				3AE559D21EF151F600B95FB8 /* Doglist+CoreDataProperties.swift */,
+				3AE559CA1EF1330200B95FB8 /* TestCase.xcdatamodeld */,
+				3AE559D51EF1529300B95FB8 /* CoreDataStack.swift */,
 				3AE559CF1EF13B2100B95FB8 /* TempViewController.swift */,
 				3A10278D1ED43E2F002B8FC6 /* datasAndSettings.swift */,
-				3AE559CA1EF1330200B95FB8 /* DataModel.xcdatamodeld */,
 				3A096CB61ED40A3C00DF6C7C /* AppDelegate.swift */,
 				3A096CB81ED40A3C00DF6C7C /* ViewController.swift */,
 				3A15A8091ED5D5E7008CCB90 /* PhotoViewController.swift */,
+				3AE559D71EF1688100B95FB8 /* NewViewController.swift */,
 				3A15A8051ED5D417008CCB90 /* MapViewController.swift */,
 				3A15A80B1ED5E5FA008CCB90 /* DetailViewController.swift */,
 				3A15A8071ED5D42D008CCB90 /* LinkViewController.swift */,
@@ -296,9 +308,13 @@
 				3A0D602C1ED650F100D45294 /* TableViewController.swift in Sources */,
 				3A15A8081ED5D42D008CCB90 /* LinkViewController.swift in Sources */,
 				3A096CB71ED40A3C00DF6C7C /* AppDelegate.swift in Sources */,
+				3AE559D61EF1529300B95FB8 /* CoreDataStack.swift in Sources */,
 				3AE559D01EF13B2100B95FB8 /* TempViewController.swift in Sources */,
-				3AE559CC1EF1330200B95FB8 /* DataModel.xcdatamodeld in Sources */,
+				3AE559CC1EF1330200B95FB8 /* TestCase.xcdatamodeld in Sources */,
+				3AE559D81EF1688100B95FB8 /* NewViewController.swift in Sources */,
+				3AE559D41EF151F600B95FB8 /* Doglist+CoreDataProperties.swift in Sources */,
 				3A15A8061ED5D417008CCB90 /* MapViewController.swift in Sources */,
+				3AE559D31EF151F600B95FB8 /* Doglist+CoreDataClass.swift in Sources */,
 				3A15A80C1ED5E5FA008CCB90 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,13 +591,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3AE559CA1EF1330200B95FB8 /* DataModel.xcdatamodeld */ = {
+		3AE559CA1EF1330200B95FB8 /* TestCase.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				3AE559CB1EF1330200B95FB8 /* DataModel.xcdatamodel */,
+				3AE559CB1EF1330200B95FB8 /* TestCase.xcdatamodel */,
 			);
-			currentVersion = 3AE559CB1EF1330200B95FB8 /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
+			currentVersion = 3AE559CB1EF1330200B95FB8 /* TestCase.xcdatamodel */;
+			path = TestCase.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

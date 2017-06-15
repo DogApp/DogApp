@@ -16,11 +16,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var locationManager: CLLocationManager?
+    lazy var coreDataStack = CoreDataStack(modelName: "TestCase")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         locationManager = CLLocationManager()
         locationManager?.requestWhenInUseAuthorization()
+        
+        var fetchdog:[NSManagedObject] = []
+        let managedContext1 = persistentContainer.viewContext
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Doglist")
+        
+        do {
+            fetchdog = try managedContext1.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        print(fetchdog.count)
+        
+        for sample in fetchdog {
+            print((sample.value(forKey: "name"))!)
+            print((sample.value(forKey: "age"))!)
+            print((sample.value(forKey: "weight"))!)
+        }
+
+        
         return true
     }
 
@@ -48,6 +70,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data stack
     
+    lazy var managedObjectContext: NSManagedObjectContext = self.persistentContainer.viewContext
+    
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -55,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
          */
-        let container = NSPersistentContainer(name: "MapSample")
+        let container = NSPersistentContainer(name: "TestCase")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

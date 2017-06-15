@@ -16,10 +16,7 @@ struct Dog{
 }
 
 var dogList:[Dog] = [ Dog(age:3, weight:7, name:"pipi", imageName:"Dog1"),
-                      Dog(age:1, weight:6, name:"toto", imageName:"Dog2"),
-                      Dog(age:4, weight:8, name:"dldl", imageName:"Dog3"),
-                      Dog(age:7, weight:1, name:"emem", imageName:"Dog4"),
-                      Dog(age:5, weight:6, name:"fefe", imageName:"Dog5")
+                      Dog(age:3, weight:7, name:"pipi", imageName:"Dog1")
                     ]
 var chosenDog = 1
 

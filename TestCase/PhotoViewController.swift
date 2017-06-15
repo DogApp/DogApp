@@ -79,7 +79,7 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SendImage"{
-            self.delegate = segue.destination as! TempViewController
+            self.delegate = segue.destination as! NewViewController
             
             if let image = image{
                 if let pngImage = UIImagePNGRepresentation(image){
