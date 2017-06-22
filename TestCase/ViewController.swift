@@ -43,7 +43,6 @@ class ViewController: UIViewController {
         gestureRecognizerRtL.cancelsTouchesInView = false
         gestureRecognizerRtL.direction = .left
         
-        var imageName:String
         var imageMade:UIImage?
         
         image3.layer.borderWidth = 1
@@ -53,8 +52,7 @@ class ViewController: UIViewController {
         image3.clipsToBounds = true
         image3.imgIndex = 2
         if (dogList.count >= 3){
-            imageName = dogList[2].imageName
-            imageMade = UIImage(named: imageName)
+            imageMade = UIImage(data: dogList[2].imageData)
             image3.image = imageMade
             
             //image3.frame = CGRect(x: 0, y: 0, width: 130, height: 130)
@@ -72,8 +70,7 @@ class ViewController: UIViewController {
         image2.clipsToBounds = true
         image2.imgIndex = 0
         if (dogList.count >= 2){
-            imageName = dogList[0].imageName
-            imageMade = UIImage(named: imageName)
+            imageMade = UIImage(data: dogList[0].imageData)
             image2.image = imageMade
             
             //image2.frame = CGRect(x: 0, y: 0, width: 130, height: 130)
@@ -86,14 +83,13 @@ class ViewController: UIViewController {
         
         if (dogList.count >= 1){
             if (dogList.count == 1){
-                imageName = dogList[0].imageName
+                imageMade = UIImage(data: dogList[0].imageData)
                 chosenDog = 0
             }
             else{
-                imageName = dogList[1].imageName
+                imageMade = UIImage(data: dogList[1].imageData)
                 chosenDog = 1
             }
-            imageMade = UIImage(named: imageName)
             image.image = imageMade
         
             //image.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
@@ -135,7 +131,7 @@ class ViewController: UIViewController {
                     image2.removeFromSuperview()
                 }
                 else{
-                    let imageMade = UIImage(named: dogList[image2.imgIndex].imageName)
+                    let imageMade = UIImage(data: dogList[image2.imgIndex].imageData)
                     image2.image = imageMade
                 }
             
@@ -165,7 +161,7 @@ class ViewController: UIViewController {
                     image3.removeFromSuperview()
                 }
                 else{
-                    let imageMade = UIImage(named: dogList[image3.imgIndex].imageName)
+                    let imageMade = UIImage(data: dogList[image3.imgIndex].imageData)
                     image3.image = imageMade
                 }
             

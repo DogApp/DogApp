@@ -18,7 +18,7 @@ class DetailViewController: UIViewController {
     lazy var warnText = UITextView()
     
     var feedFirstFlag = true
-    lazy var feedText = UITextField()
+    lazy var feedText = UITextView()
     
     var checkFirstFlag = true
     lazy var checkList = UITableView()
@@ -27,8 +27,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let imageName = dogList[chosenDog].imageName
-        let imageMade = UIImage(named: imageName)
+        //let imageName = dogList[chosenDog].imageName
+        let imageMade = UIImage(data: dogList[chosenDog].imageData)
         firstImage.image = imageMade
         
         dogInfoLabel.text = dogList[chosenDog].name + " / " + String(dogList[chosenDog].age) + "살 / " + String(dogList[chosenDog].weight) + "kg"
@@ -46,10 +46,11 @@ class DetailViewController: UIViewController {
     @IBAction func feedButtonPushed() {
         if feedFirstFlag == true{
             feedFirstFlag = false
-            feedText.text = "\(dogList[chosenDog].name)에게 맞는 사료량은 \(calculateFeed(weight: dogList[chosenDog].weight))kg 입니다."
-            feedText.frame = CGRect(x: 0, y: 0, width: 300, height: 50)
+            feedText.text = "\(dogList[chosenDog].name)에게 맞는 사료량은\n" + calculateFeed(weight: dogList[chosenDog].weight) + "g\n" + calculateFeedWetDiet(weight: dogList[chosenDog].weight) + "g\n" + calculateFeedDryDiet(weight: dogList[chosenDog].weight) + "g"
+            feedText.frame = CGRect(x: 0, y: 0, width: 260, height: 150)
             feedText.frame.origin.x = screenView.frame.origin.x-300
             feedText.frame.origin.y = screenView.frame.height/2
+            feedText.font = .systemFont(ofSize: 13)
         }
         for subView in screenView.subviews{
             subView.removeFromSuperview()
@@ -70,7 +71,7 @@ class DetailViewController: UIViewController {
         }
         screenView.addSubview(warnText)
     }
-    
+    /*
     @IBAction func vaccineButtonPushed() {
         if checkFirstFlag == true{
             checkList.frame = CGRect(x: 0, y: 0, width: 250, height: 250)
@@ -87,7 +88,7 @@ class DetailViewController: UIViewController {
         }
         screenView.addSubview(checkList)
     }
-
+*/
     /*
     // MARK: - Navigation
 

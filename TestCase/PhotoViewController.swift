@@ -19,9 +19,11 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
     weak var delegate : photoViewControllerDelegate?
     
+    @IBOutlet weak var nextButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nextButton.isEnabled = false
         // Do any additional setup after loading the view.
     }
 
@@ -56,6 +58,7 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         image = info[UIImagePickerControllerEditedImage] as? UIImage
         if let theImage = image{
             show(image: theImage)
+            nextButton.isEnabled = true
         }
         dismiss(animated: true, completion: nil)
     }

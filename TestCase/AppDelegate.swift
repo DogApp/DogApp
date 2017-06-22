@@ -34,15 +34,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         
-        print(fetchdog.count)
+       // print(fetchdog.count)
         
         for sample in fetchdog {
+            /*
             print((sample.value(forKey: "name"))!)
             print((sample.value(forKey: "age"))!)
             print((sample.value(forKey: "weight"))!)
-        }
 
-        
+            if let pic = sample.value(forKey: "picture"){
+                print(pic)
+            }*/
+            //managedContext1.delete(sample)
+            dogList.append(Dog(
+                age:(sample.value(forKey: "age"))! as! Int,
+                weight:(sample.value(forKey: "weight"))! as! Float,
+                name:(sample.value(forKey: "name"))! as! String,
+                imageName:"",
+                imageData:(sample.value(forKey: "picture"))! as! Data,
+                vac_1:(sample.value(forKey: "vac_1"))! as! Bool,
+                vac_2:(sample.value(forKey: "vac_2"))! as! Bool,
+                vac_3:(sample.value(forKey: "vac_3"))! as! Bool
+            ))
+        }
+        /*
+        do {
+            try managedContext1.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        */
         return true
     }
 

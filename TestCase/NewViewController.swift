@@ -16,7 +16,6 @@ class NewViewController: UIViewController, photoViewControllerDelegate {
     @IBOutlet weak var dogAge: UITextField!
     @IBOutlet weak var dogWeight: UITextField!
     
-    @IBOutlet weak var imageView: UIImageView!
     var image: UIImage?
     
     
@@ -29,33 +28,71 @@ class NewViewController: UIViewController, photoViewControllerDelegate {
         let wtmp:NSString = dogWeight.text! as NSString
         let age:Int = Int(atmp.intValue)
         let weight:Float = wtmp.floatValue
-        var fetchdogs:[NSManagedObject] = []
         
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        // 1
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        // 2
-        let entity =
-            NSEntityDescription.entity(forEntityName: "Doglist",
+        //var fetchdogs:[NSManagedObject] = []
+        
+        if age>0 && age<50 && weight>0.0 && dogName.text != "" {
+            guard let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate else {
+                    return
+                }
+            // 1
+            let managedContext =
+                appDelegate.persistentContainer.viewContext
+            // 2
+            let entity =
+                NSEntityDescription.entity(forEntityName: "Doglist",
                                        in: managedContext)!
-        let person = NSManagedObject(entity: entity,
+            let newDog = NSManagedObject(entity: entity,
                                      insertInto: managedContext)
-        person.setValue(dogName.text, forKeyPath: "name")
-        person.setValue(age, forKeyPath: "age")
-        person.setValue(weight, forKeyPath: "weight")
-        person.setValue(false, forKeyPath: "vac_1")
-        person.setValue(false, forKeyPath: "vac_2")
-        person.setValue(false, forKeyPath: "vac_3")
-        // 4
-        do {
-            try managedContext.save()
-            fetchdogs.append(person)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
+            newDog.setValue(dogName.text, forKeyPath: "name")
+            newDog.setValue(age, forKeyPath: "age")
+            newDog.setValue(weight, forKeyPath: "weight")
+            newDog.setValue(UIImagePNGRepresentation(image!), forKeyPath: "picture")
+            newDog.setValue(false, forKeyPath: "vac_1")
+            newDog.setValue(false, forKeyPath: "vac_2")
+            newDog.setValue(false, forKeyPath: "vac_3")
+        
+            dogList.append(Dog(
+                age:age,
+                weight:weight,
+                name:dogName.text!,
+                imageName:"",
+                imageData:UIImagePNGRepresentation(image!)!,
+                vac_1:false,
+                vac_2:false,
+                vac_3:false
+            ))
+    
+            // 4
+            do {
+                try managedContext.save()
+                //fetchdogs.append(newDog)
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        
+            let mainViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as!   ViewController
+            self.present(mainViewController, animated: true, completion: nil)
+        }
+        else {
+            var msgerror:String = ""
+            if dogName.text == "" {
+                msgerror += "이름을 입력해주세요!"
+            }
+            else if age==0 || weight == 0 {
+                msgerror += "나이, 체중에 숫자를 입력해주세요!"
+            }
+            else if age>50 {
+                msgerror += "정상적인 수치를 입력해주세요!"
+            }
+            let alert = UIAlertController(title: "입력 오류!",
+                                          message: msgerror,
+                                          preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "확인",
+                                         style: .default)
+            alert.addAction(OKAction)
+            present(alert, animated: true)
         }
         
 /*        let dogFetch:NSFetchRequest<Doglist> = Doglist.fetchRequest()
@@ -81,7 +118,6 @@ class NewViewController: UIViewController, photoViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = image
         // Do any additional setup after loading the view, typically from a nib.
         
 /*        let dogName = "Hi"
@@ -113,6 +149,10 @@ class NewViewController: UIViewController, photoViewControllerDelegate {
 
     func sendImageData(imageData: Data){
         image = UIImage(data: imageData)
+    }
+    
+    @IBAction func close() {
+        dismiss(animated: true, completion: nil)
     }
 }
 
